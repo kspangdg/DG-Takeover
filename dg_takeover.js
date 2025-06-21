@@ -2,7 +2,7 @@
  * @class DG_Takeover
  * @description A refacterd version of the original takeover.js. DG_Takeover is a JS plugin for easily creating stable and accessible takeover navigations, build to enhance takeover animations and not be jQuery dependent. 
  * @auther Durkan Group
- * @version 0.1.0
+ * @version 1.0.0
  */
 class DG_Takeover {
     constructor(_id, options) {

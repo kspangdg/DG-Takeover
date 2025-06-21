@@ -33,43 +33,45 @@ DG\_Takeover is a refactored and modernized version of a traditional takeover na
 
 Simply include the DG\_Takeover class in your project. You can add it directly to your HTML file, or include it as part of your JavaScript bundle.
 
-\<\!DOCTYPE html\>  
-\<html lang="en"\>  
-\<head\>  
-    \<meta charset="UTF-8"\>  
-    \<meta name="viewport" content="width=device-width, initial-scale=1.0"\>  
-    \<title\>DG Takeover Example\</title\>  
-    \<link rel="stylesheet" href="style.css"\> \<\!-- Your CSS for takeover animations \--\>  
-\</head\>  
-\<body\>
+```
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>DG Takeover Example</title>  
+    <link rel="stylesheet" href="style.css"> <!-- Your CSS for takeover animations -->  
+</head>  
+<body>
 
-    \<\!-- Your HTML content \--\>
+    <!-- Your HTML content -->
 
-    \<button data-dgtakeover-toggle="myTakeoverMenu"\>Open Menu\</button\>
+    <button data-dgtakeover-toggle="myTakeoverMenu">Open Menu</button>
 
-    \<div id="myTakeoverMenuContent" data-dgtakeover-menu="myTakeoverMenu"\>  
-        \<\!-- Menu content goes here \--\>  
-        \<nav\>  
-            \<ul\>  
-                \<li\>\<a href="\#"\>Home\</a\>\</li\>  
-                \<li\>\<a href="\#"\>About\</a\>\</li\>  
-                \<li\>\<a href="\#"\>Services\</a\>\</li\>  
-                \<li\>\<a href="\#"\>Contact\</a\>\</li\>  
-            \</ul\>  
-        \</nav\>   
-    \</div\>
+    <div id="myTakeoverMenuContent" data-dgtakeover-menu="myTakeoverMenu">  
+        <!-- Menu content goes here -->  
+        <nav>  
+            <ul>  
+                <li><a href="#">Home</a></li>  
+                <li><a href="#">About</a></li>  
+                <li><a href="#">Services</a></li>  
+                <li><a href="#">Contact</a></li>  
+            </ul>  
+        </nav>   
+    </div>
 
-    \<script src="dg\_takeover.js"\>\</script\> \<\!-- Path to your DG\_Takeover class \--\>  
-    \<script\>  
-        // Initialize DG\_Takeover  
-        window.onload \= function() {  
-            new DG\_Takeover('myTakeoverMenu', {  
+    <script src="dg_takeover.js"></script> <!-- Path to your DG_Takeover class -->  
+    <script>  
+        // Initialize DG_Takeover  
+        window.onload = function() {  
+            new DG_Takeover('myTakeoverMenu', {  
                 duration: 0.7 // Optional: adjust animation duration  
             });  
         };  
-    \</script\>  
-\</body\>  
-\</html\>
+    </script>  
+</body>  
+</html>
+```
 
 ## **Usage**
 
@@ -77,28 +79,27 @@ Simply include the DG\_Takeover class in your project. You can add it directly t
 
 You need two main types of HTML elements for DG\_Takeover to work:
 
-1. **Toggle Buttons**: Elements that will open or close the takeover. They require the data-dgtakeover-toggle attribute set to a unique ID that links them to a specific takeover menu.  
-   \<button data-dgtakeover-toggle="uniqueMenuId"\>Open Navigation\</button\>  
-   \<a href="\#" data-dgtakeover-toggle="uniqueMenuId"\>Close\</a\>
+1. **Toggle Buttons**: Elements that will toggle the takeover. They require the data-dgtakeover-toggle attribute set to a unique ID that links them to a specific takeover menu.
+``` 
+<button data-dgtakeover-toggle="uniqueMenuId">Hambuger</button>  
+```
 
 2. **Takeover Menu**: The actual full-screen overlay element. It requires the data-dgtakeover-menu attribute, also set to the same unique ID.  
-   \<div id="yourMenuContent" data-dgtakeover-menu="uniqueMenuId"\>  
-       \<\!-- Your navigation links or other takeover content \--\>  
-   \</div\>
+```
+<div data-dgtakeover-menu="uniqueMenuId">  
+    <!-- Your navigation links or other takeover content -->  
+</div>
+```
 
 ### **JavaScript Initialization**
 
 Create a new instance of DG\_Takeover by passing the unique ID of your takeover menu and an optional options object.
 
-document.addEventListener('DOMContentLoaded', () \=\> {  
-    // Initialize a takeover with the ID 'myTakeoverMenu'  
-    new DG\_Takeover('myTakeoverMenu', {  
-        duration: 0.5 // Optional: Set animation duration in seconds  
-    });
-
-    // You can initialize multiple takeovers with different IDs  
-    new DG\_Takeover('anotherMenuId');  
+```
+new DG_Takeover('myTakeoverMenu', {  
+    duration: 0.5;
 });
+```
 
 ### **Options**
 
@@ -124,19 +125,20 @@ DG\_Takeover dispatches several custom events on the document object, allowing y
 | dg\_takeover\_toggle\_close | Triggers the takeover to close if currently open. | Can be dispatched manually to force close. |
 
 **Example Event Listener:**
-
-document.addEventListener('dg\_takeover\_open', (e) \=\> {  
-    console.log('DG\_Takeover: Menu has finished opening\!');  
+```
+document.addEventListener('dg_takeover_open', (e) => {  
+    console.log('DG_Takeover: Menu has finished opening!');  
     // Perform actions after the menu is fully open  
 });
 
-document.addEventListener('dg\_takeover\_close', (e) \=\> {  
-    console.log('DG\_Takeover: Menu has finished closing\!');  
+document.addEventListener('dg_takeover_close', (e) => {  
+    console.log('DG_Takeover: Menu has finished closing!');  
     // Perform actions after the menu is fully closed  
 });
 
 // Manually trigger a toggle  
-// document.dispatchEvent(new Event('dg\_takeover\_toggle'));
+// document.dispatchEvent(new Event('dg_takeover_toggle'));
+```
 
 ### **Styling with CSS**
 
@@ -149,9 +151,9 @@ DG\_Takeover relies on CSS to handle the visual animations. It adds and removes 
 | takeover\_\_open | Takeover menu, Toggle buttons | Applied when the takeover is fully open. Define your "open" state styles here. |
 
 **Example CSS (conceptual):**
-
-/\* Basic styling for your takeover menu \*/  
-\[data-dgtakeover-menu\] {  
+```
+/* Basic styling for your takeover menu */  
+[data-dgtakeover-menu] {  
     position: fixed;  
     top: 0;  
     left: 0;  
@@ -162,39 +164,40 @@ DG\_Takeover relies on CSS to handle the visual animations. It adds and removes 
     display: flex;  
     justify-content: center;  
     align-items: center;  
-    visibility: hidden; /\* Start hidden \*/  
-    opacity: 0; /\* Start invisible for transition \*/  
-    transform: translateY(-100%); /\* Start off-screen for slide animation \*/  
-    transition: all 0.5s ease-out; /\* Default transition, matches JS duration \*/  
+    visibility: hidden; /* Start hidden */  
+    opacity: 0; /* Start invisible for transition */  
+    transform: translateY(-100%); /* Start off-screen for slide animation */  
+    transition: all 0.5s ease-out; /* Default transition, matches JS duration */  
     z-index: 9999;  
 }
 
-/\* State when takeover is opening (optional, often combined with takeover\_\_open) \*/  
-\[data-dgtakeover-menu\].takeover\_\_opening {  
+/* State when takeover is opening (optional, often combined with takeover__open) */  
+[data-dgtakeover-menu].takeover__opening {  
     visibility: visible;  
 }
 
-/\* State when takeover is fully open \*/  
-\[data-dgtakeover-menu\].takeover\_\_open {  
+/* State when takeover is fully open */  
+[data-dgtakeover-menu].takeover__open {  
     opacity: 1;  
     transform: translateY(0);  
     visibility: visible;  
 }
 
-/\* For toggle buttons, if you want them to visually change \*/  
-\[data-dgtakeover-toggle\] {  
+/* For toggle buttons, if you want them to visually change */  
+[data-dgtakeover-toggle] {  
     transition: transform 0.5s ease-out;  
 }
 
-\[data-dgtakeover-toggle\].takeover\_\_open {  
-    /\* Example: rotate an icon for a "close" state \*/  
+[data-dgtakeover-toggle].takeover__open {  
+    /* Example: rotate an icon for a "close" state */  
     transform: rotate(45deg);  
 }
 
-/\* Prevents scroll on html and body \*/  
+/* Prevents scroll on html and body */  
 .js-no-scroll {  
-    overflow: hidden \!important;  
+    overflow: hidden !important;  
 }
+```
 
 ## **Accessibility (ADA)**
 
@@ -216,4 +219,4 @@ These attributes help screen readers and other assistive technologies understand
 ## **Author & Version**
 
 * **Author**: Durkan Group  
-* **Version**: 0.1.0
+* **Version**: 1.0.0
